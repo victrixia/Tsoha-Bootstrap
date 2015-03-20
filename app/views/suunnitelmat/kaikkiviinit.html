@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Viinisuosittelija</h1>
+
+<section><p>
+    Viinit, lajitellaan myöhemmin tyypeittäin
+</p></section>
+
+<section><p>
+<!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana viinien näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+    <h2>Kaikki Viinit</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tyyppi</th>
+            <th>Makeusaste/Täyteläisyys</th>
+            <th>Hapokkuus/Tanniinisuus</th>
+            <th>Kotimaa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="viini_show">Perusvalkkarin nimi</a></td>
+            <td>Valkoviini</td>
+            <td>Puolikuiva</td>
+            <td>Hapokas</td>
+            <td>Saksa</td>
+        </tr>
+        <tr>
+            <td>Peruspunkku</td>
+            <td>Punaviini</td>
+            <td>Täyteläinen</td>
+            <td>Keskitanniininen</td>
+            <td>Italia</td>
+        </tr>
+        </tbody>
+    </table>
+
+    </p></section>
+
+
+{% endblock %}

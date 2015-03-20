@@ -1,0 +1,6 @@
+{
+	
+  "cmd": ["bash", "/home/amparkki/Tsoha2015/Tsoha-Bootstrap/deploy.sh"],
+  "selector" : "source.shell"
+
+}
