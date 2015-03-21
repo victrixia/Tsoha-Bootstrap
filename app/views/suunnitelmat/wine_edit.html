@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muokkaa viiniä Hippi Hei Valkkari</h1>
+
+<form>
+
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" class="form-control" value="Hippi Hei Valkkari">
+    </div>
+    <div class="form-group">
+        <label>Makeusaste</label>
+        <input type="text" class="form-control" value="Puolikuiva">
+    </div>
+    <div class="form-group">
+        <label>Hapokkuus</label>
+        <input type="text" class="form-control" value="Keskihapokas">
+    </div>
+    <div class="form-group">
+        <label>Alkuperämaa</label>
+        <input type="text" class="form-control" value="USA">
+    </div>
+    <div class="form-group">
+        <label>Rypäleet</label>
+        <input type="text" class="form-control" value="Pinot Grigio, Muscat">
+    </div>
+    <div class="form-group">
+        <label>Kuvaus</label>
+      <input type="text" class="form-control" value="Tähän tulee viinin kuvaus">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}

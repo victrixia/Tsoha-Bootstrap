@@ -22,7 +22,15 @@
       View::make('suunnitelmat/kaikkiviinit.html');
     }
 
-    public static function viini_show(){
+    public static function wine_show(){
       View::make('suunnitelmat/show_wine.html');
+    }
+
+    public static function login(){
+      View::make('suunnitelmat/login.html');
+    }
+
+    public static function wine_edit(){
+      View::make('suunnitelmat/wine_edit.html');
     }
   }

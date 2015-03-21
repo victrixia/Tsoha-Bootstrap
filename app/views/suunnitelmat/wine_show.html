@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Hippi Hei Valkkari</h1>
+<!-- Painikkeet tähän -->
+<p>
+    <button class="btn btn-danger">Poista</button> <a href="edit" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- Tiedot tulee listana/parannellussa versiossa taulukkona tähän -->
+<p><strong>Pinot Grigio, Muscat</strong></p>
+<p>Lyhyt sanallinen kuvaus</p>
+
+<table class="table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Tyyppi</th>
+        <th>Makeusaste</th>
+        <th>Hapokkuus</th>
+        <th>Kotimaa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Valkoviini</td>
+        <td>Puolikuiva</td>
+        <td>Keskihapokas</td>
+        <td>USA</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<!-- Listaus teknisistä tiedoista, esim. sokeripitoisuus, happoja/litra -->
+
+<ul>
+    <li>Sokeripitoisuus: 17 g/l</li>
+    <li>Happoja: 6,5 g/l</li>
+    <li>Yms</li>
+
+</ul>
+<p></p>
+{% endblock %}
