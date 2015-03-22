@@ -19,11 +19,11 @@
     }
 
     public static function viinit(){
-      View::make('suunnitelmat/kaikkiviinit.html');
+      View::make('suunnitelmat/wines_show.html');
     }
 
     public static function wine_show(){
-      View::make('suunnitelmat/show_wine.html');
+      View::make('suunnitelmat/wine_show.html');
     }
 
     public static function login(){
