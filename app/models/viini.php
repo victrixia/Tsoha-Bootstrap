@@ -64,5 +64,13 @@ Class Viini extends BaseModel
         }
         return null;
     }
+
+    public static function onPunaviini(){
+
+        if ('viinityyppi_id' == 1){
+            return true;
+        }
+        return false;
+    }
 }
 

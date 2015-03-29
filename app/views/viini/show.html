@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+D'helloo? Canna I speak-ah wid someone who-a speak-a da vietnamese-a?
+
+{% for viini in tama_viini %}
+
+<h1>{{viini.nimi}}</h1>
+<!-- Painikkeet tähän -->
+<p>
+    <button class="btn btn-danger">Poista</button>
+    <a href="edit" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- Tiedot tulee listana/parannellussa versiossa taulukkona tähän -->
+
+
+<p><strong>Luettelo rypäleistä kun monesta moneen toimii</strong></p>
+<p>Kuvaus kun yhteys kuvaukseen operoi</p>
+<div>
+    <table class="table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Tyyppi</th>
+            <th>{% if viini.onPunaviini() %}
+                Täyteläisyys
+                {% else %}
+                Makeus
+                {% endif %}
+            </th>
+            <th>{% if viini.onPunaviini() %}
+                Tanniinisuus
+                {% else %}
+                Hapokkuus
+
+                {% endif %}
+            </th>
+            <th>Kotimaa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{viini.viinityyppi_id}}</td>
+            <td>{% if viinityyppi_id == 1%}
+                Uutosta {{viini.uutos}} g/l
+                {% else %}
+                Sokeria {{viini.makeus}} g/l
+
+                {% endif %}
+            </td>
+            <td>{% if viinityyppi_id == 1%}
+                Tanniineja
+                {% else %}
+                Happoja
+
+                {% endif %} {{viini.happo}} g/l
+            </td>
+            <td>{{viini.kotimaa_id}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+<!-- Listaus teknisistä tiedoista, esim. sokeripitoisuus, happoja/litra -->
+<p>
+<ul>{% if viini.makeus %}
+    <li>Sokeripitoisuus:
+        {{viini.makeus}} g/l
+    </li>
+    {% endif %}
+    <li>Happoja: {{viini.happo}} g/l</li>
+    <li>Vuosikerta: {{viini.vuosikerta}}</li>
+
+</ul></p>
+<p></p>
+{% endfor %}
+{% endblock %}

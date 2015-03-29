@@ -13,13 +13,17 @@
   });
 
   $routes->get('/viinit', function() {
-    HelloWorldController::viinit();
+    ViiniController::index();
   });
 
-  $routes->get('/viinit/1', function(){
-    HelloWorldController::wine_show();
-  });
+//  $routes->get('/viinit/1', function(){
+//    HelloWorldController::wine_show();
+//  });
 
+$routes->get('/viini/:id', function($id){
+    ViiniController::show($id);
+
+});
   $routes->get('/viinit/1/edit', function(){
       HelloWorldController::wine_edit();
     });
@@ -27,3 +31,4 @@
   $routes->get('login', function(){
     HelloWorldController::login();
   });
+

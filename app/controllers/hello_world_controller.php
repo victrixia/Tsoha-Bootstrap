@@ -1,5 +1,5 @@
 <?php
-
+require 'app/models/viini.php';
 
 class HelloWorldController extends BaseController
 {

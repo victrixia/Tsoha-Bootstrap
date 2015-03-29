@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Viinisuosittelija</h1>
+
+<section><p>
+    Viinit, lajitellaan myöhemmin tyypeittäin
+</p></section>
+
+<section><p>
+    <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana viinien näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+
+    <h2>Kaikki Viinit</h2>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Tyyppi</th>
+                <th>Makeusaste/Täyteläisyys</th>
+                <th>Hapokkuus/Tanniinisuus</th>
+                <th>Kotimaa</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for viini in viinit%}
+            <tr>
+                <td><a href="{{base_path}}/viini/{{viini.id}}">{{viini.nimi}}</a></td>
+                <td>{{viini.viinityyppi_id}}</td>
+                <td>
+                    {% if viini.onPunaviini() %}
+                    Uutosta {{viini.uutos}} g/l
+                    {% else %}
+                    Sokeria {{viini.makeus}} g/l
+
+                    {% endif %}
+                </td>
+                <td>
+                    {% if viini.onPunaviini() %}
+                    Tanniinit {{viini.happo}} g/l
+                    {% else %}
+                    Happoja {{viini.happo}} g/l
+
+                    {% endif %}
+                </td>
+                <td>{{viini.kotimaa_id}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </p></section>
+
+
+{% endblock %}
