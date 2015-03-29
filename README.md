@@ -11,6 +11,10 @@ Yleisiä linkkejä:
 * [Viinien listaus](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit)
 * [Yksittäisen viinin sivu](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit/1)
 
+## Huom huom 3 viikon jälkeen: 
+
+Sovelluksen linkit toimivat nyt keskenään. En onnistunut saamaan viinin lisäystä toimimaan, joten pykäsin nopeasti rypäleen lisäyksen. Rypäleen värin nimen näyttävä metodi on kuitenkin ihan höpöhöpöä, ja tällä hetkellä kaikki rypäleet luulevat olevansa valkoisia. Hupsista. Aika valitettavasti loppuu, joten mennään tällä.
+
 ## Työn aihe: Viinisuositus-websovellus
 
 Järjestelmä muistuttaa itse asiassa jossain määrin valmiiden aiheiden drinkkiarkistoa. Tarkoitus on toteuttaa järjestelmä, josta voi hakea omaan makuunsa tai johonkin tiettyyn ruokalajiin sopivia viinejä ja niiden tarkkoja kuvauksia niiden tyypin, makeusasteen, käytettyjen rypäleiden ja muiden ominaisuuksien mukaan. Viineillä on myös kotimaa. Järjestelmä keskittyy nimenomaan viinirypäleestä käytettyjen juomien listaamiseen, eikä sisällä esim. Oluita tai juomasekoituksia. 

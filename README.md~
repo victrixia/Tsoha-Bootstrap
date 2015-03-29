@@ -5,6 +5,12 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://amparkki.users.cs.helsinki.fi/viinisuositus)
 * [Linkki dokumentaatiooni](https://www.github.com/victrixia/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
 
+## Sovelluksen suunnitelmanäkymiä:
+
+* [Etusivu](http://amparkki.users.cs.helsinki.fi/viinisuositus/etusivu)
+* [Viinien listaus](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit)
+* [Yksittäisen viinin sivu](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit/1)
+
 ## Työn aihe: Viinisuositus-websovellus
 
 Järjestelmä muistuttaa itse asiassa jossain määrin valmiiden aiheiden drinkkiarkistoa. Tarkoitus on toteuttaa järjestelmä, josta voi hakea omaan makuunsa tai johonkin tiettyyn ruokalajiin sopivia viinejä ja niiden tarkkoja kuvauksia niiden tyypin, makeusasteen, käytettyjen rypäleiden ja muiden ominaisuuksien mukaan. Viineillä on myös kotimaa. Järjestelmä keskittyy nimenomaan viinirypäleestä käytettyjen juomien listaamiseen, eikä sisällä esim. Oluita tai juomasekoituksia. 
