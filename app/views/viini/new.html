@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Luo uusi viini</h1>
+
+<form method="post" action="{{base_path}}/viini">
+
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" name ="nimi" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Tyyppi</label>
+        <select name = "tyyppi" class="form-control">
+            <option value = "1">Punaviini</option>
+            <option value = "2">Valkoviini</option>
+            <option value = "3">Kuohuviini</option>
+            <option value = "4">Roseeviini</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Vuosikerta</label>
+        <select name ="vuosikerta" class="form-control">
+            <!--ei toimi jostain syystä, kovakoodataan nyt muutama vuosi että päästään testaamaan-->
+            <!--<?php-->
+            <!--for($i = 1990; $i < date("Y")+1; $i++){-->
+            <!--echo ' <option value = "'.$i.'">'.$i.'</option> ';-->
+            <!--} ?>-->
+
+            <!--vaihtoehtoinen kokeiluversio-->
+            <option value ="2009">2009</option>
+            <option value ="2010">2010</option>
+            <option value ="2011">2011</option>
+            <option value ="2012">2012</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Alkoholia (% vol)</label>
+        <input type="text" name = "alkoholi" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Sokeria (g/l)</label>
+        <input type="text" name ="makeus" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Happoja (g/l)</label>
+        <input type="text" name = "happo" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Uuutos (g/l)</label>
+        <input type="text" name = "uutos" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Alkuperämaa</label>
+        <select name ="kotimaa_id" class="form-control">
+            <option value="1">Ranska, Vin de France</option>
+            <option value="2">Saksa, Mosel</option>
+            <option value="3">Italia, IGT Costa Toscana</option>
+        </select>
+    </div>
+
+    Tulee lisää vaihtoehtoja kunhan yhteydet toimii, ts. rypäleet ja kuvaus
+
+    <!--<div class="form-group">-->
+        <!--<label>Rypäleet</label>-->
+        <!--<input type="text" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label>Kuvaus</label>-->
+        <!--<input type="text" class="form-control">-->
+    <!--</div>-->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}

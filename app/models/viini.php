@@ -65,12 +65,25 @@ Class Viini extends BaseModel
         return null;
     }
 
+
+//    tämä taitaa olla ihan höpöfunktio, mutta korjataan joskus
     public static function onPunaviini(){
 
         if ('viinityyppi_id' == 1){
             return true;
         }
         return false;
+    }
+
+    public function save(){
+        $query = DB::connection()->prepare('INSERT INTO viini (viinityyppi_id, kotimaa_id, nimi, vuosikerta, alkoholi, happo, makeus, uutos) VALUES (:viinityyppi_id, :kotimaa_id, :nimi, :vuosikerta, :alkoholi, :happo, :makeus, :uutos) RETURNING id');
+
+        $query -> execute(array('viinityyppi_id' => $this->viinityyppi_id, 'kotimaa_id' => $this->kotimaa_id, 'nimi' => $this->nimi, 'vuosikerta' => $this->vuosikerta, 'alkoholi' => $this->alkoholi, 'happo' => $this->happo, 'makeus' => $this->makeus, 'uutos' => $this->uutos));
+
+        $row = $query->fetch();
+
+        $this->id = $row['id'];
+
     }
 }
 

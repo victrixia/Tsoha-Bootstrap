@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Luo uusi rypäle</h1>
+
+
+<form method="post" action="{{base_path}}/rypale">
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" name="nimi" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Väri</label>
+        <select name="vari" class="form-control">
+            <option value="1">Punainenn</option>
+            <option value="2">Valkoinen</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Kuvaus</label>
+    <textarea name="kuvaus" class="form-control" rows="10" cols="30">
+
+    </textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}

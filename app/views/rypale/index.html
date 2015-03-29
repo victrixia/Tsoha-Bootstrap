@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Rypäleet</h1>
+
+<section><p>
+    Tietokantaan lisätyt rypäleet
+</p></section>
+
+<p>
+    <a href="{{base_path}}/rypale/new" class="btn btn-info">Lisää uusi</a></p>
+
+<section><p>
+    <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+
+    <h2>Kaikki rypäleet</h2>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Väri</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for rypale in rypaleet%}
+            <tr>
+                <td><a href="{{base_path}}/rypale/{{rypale.id}}">{{rypale.nimi}}</a></td>
+                <td>{{rypale.vari()}}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </p></section>
+
+
+{% endblock %}

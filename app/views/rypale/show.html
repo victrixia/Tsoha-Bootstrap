@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="alert alert-success">
+    {{message}}
+</div>
+
+    <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+
+    <h1>{{rypale.nimi}}</h1>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Väri</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{rypale.nimi}}</td>
+                <td>{{rypale.vari()}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </p></section>
+
+
+{% endblock %}
