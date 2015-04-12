@@ -14,8 +14,10 @@
 
 <h1>{{rypale.nimi}}</h1>
 
+{% if user_logged_in%}
 {{forms.destroy_button("#{base_path}/rypale/#{rypale.id}/destroy")}}
 {{forms.link_button("#{base_path}/rypale/#{rypale.id}/edit")}}
+{% endif %}
 
 <div>
     <table class="table table-striped">
@@ -37,11 +39,10 @@
 </div>
 
 <div class="col-md-10">
-{{rypale.kuvaus}}
+    {{rypale.kuvaus}}
 </div>
 
 </p></section>
-
 
 
 {% endblock %}

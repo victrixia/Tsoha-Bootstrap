@@ -7,8 +7,11 @@
     Tietokantaan lisätyt rypäleet
 </p></section>
 
-<p>
-    <a href="{{base_path}}/rypale/new" class="btn btn-info">Lisää uusi</a></p>
+
+{% if user_logged_in %}
+<p>    <a href="{{base_path}}/rypale/new" class="btn btn-info">Lisää uusi</a></p>
+
+{% endif %}
 
 <section><p>
     <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->

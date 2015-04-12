@@ -5,15 +5,11 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://amparkki.users.cs.helsinki.fi/viinisuositus)
 * [Linkki dokumentaatiooni](https://www.github.com/victrixia/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
 
-## Sovelluksen suunnitelmanäkymiä:
+## Käynnistys/käyttöohje
 
-* [Etusivu](http://amparkki.users.cs.helsinki.fi/viinisuositus/etusivu)
-* [Viinien listaus](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit)
-* [Yksittäisen viinin sivu](http://amparkki.users.cs.helsinki.fi/viinisuositus/viinit/1)
+Harjoitustyö löytyy ylläolevaa sovelluslinkkiä seuraamalla. Käytössä on tunnukset käyttäjänimi:tarkastaja, salasana: kekkonen1 (älä kysy). Sessiota on käytetty hyväksi lähinnä niin, että rypäleen lisäys ja muokkaus on mahdollista vain kirjautuneelle käyttäjälle. Lisäksi kirjautumisen näkee lähinnä siitä, että ylhäällä oikealla on ei mihinkään johtava 'kirjaudu ulos' -linkki. :P Sovellukseen voi toistaiseksi lisätä yksittäisiä viinejä ja rypäleitä, käyttäjän omia ei ole vielä toteutettu. 
 
-## Huom huom 3 viikon jälkeen: 
-
-Sovelluksen linkit toimivat nyt keskenään. En onnistunut saamaan viinin lisäystä toimimaan, joten pykäsin nopeasti rypäleen lisäyksen. Rypäleen värin nimen näyttävä metodi on kuitenkin ihan höpöhöpöä, ja tällä hetkellä kaikki rypäleet luulevat olevansa valkoisia. Hupsista. Aika valitettavasti loppuu, joten mennään tällä.
+Ylipäätään rypäleen toiminnot ovat pisimmällä, koska taulu on yksinkertaisempi ja helpompi saada toimimaan - php:n kanssa nollasta lähteminen on todella turhauttavaa ja hankalaa kun on tottunut rubyyn :((( 
 
 ## Työn aihe: Viinisuositus-websovellus
 
