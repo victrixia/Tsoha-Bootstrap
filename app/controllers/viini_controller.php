@@ -1,5 +1,4 @@
 <?php
-require 'app/models/viini.php';
 
 class ViiniController extends BaseController
 {
@@ -7,7 +6,7 @@ class ViiniController extends BaseController
     public static function index()
     {
 
-        $viinit = viini::all();
+        $viinit = Viini::all();
         View::make('viini/index.html', array('viinit' => $viinit));
     }
 

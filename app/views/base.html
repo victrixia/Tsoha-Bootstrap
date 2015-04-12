@@ -44,10 +44,20 @@
                 <li><a href="{{base_path}}/rypale">Rypäleet </a></li>
             </ul>
 
+
+            {% if user_logged_in %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Kirjaudu ulos</a></li>
+            </ul>
+
+            {% else %}
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Rekisteröidy</a></li>
                 <li><a href="login">Kirjaudu sisään</a></li>
             </ul>
+
+            {% endif %}
         </div>
     </div>
 </nav>

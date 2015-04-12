@@ -67,7 +67,7 @@ class RypaleController extends BaseController
         $attributes = array(
             'id' => $id,
             'nimi' => $params['nimi'],
-            'vari' => $params['vari'],
+            'vari' => (int)$params['vari'],
             'kuvaus' => $params['kuvaus']
         );
 
@@ -91,6 +91,6 @@ class RypaleController extends BaseController
         $rypale->destroy();
 
         // Ohjataan käyttäjä pelien listaussivulle ilmoituksen kera
-        Redirect::to('/game', array('message' => 'Peli on poistettu onnistuneesti!'));
+        Redirect::to('/rypale', array('message' => 'Rypäle on poistettu onnistuneesti!'));
     }
 }

@@ -7,7 +7,7 @@ Class Rypale extends BaseModel{
     public function __construct($attributes)
     {
         parent::__construct($attributes);
-        $this->validators = array('validate_name','validate_colour_is_a_number','validate_colour_is_one_or_two');
+        $this->validators = array('validate_name','validate_colour_is_a_number', 'validate_colour_is_one_or_two');
     }
 
     public static function all()
@@ -44,7 +44,7 @@ Class Rypale extends BaseModel{
         $row = $query->fetch();
 
         if ($row) {
-            $rypale = new Viini(array(
+            $rypale = new Rypale(array(
                 'id' => $row['id'],
                 'nimi' => $row['nimi'],
                 'vari' => $row['vari'],
@@ -59,7 +59,7 @@ Class Rypale extends BaseModel{
     public function save(){
         $query = DB::connection()->prepare('INSERT INTO rypale (nimi, vari, kuvaus) VALUES (:nimi, :vari, :kuvaus) RETURNING id');
 
-        $query -> execute(array('nimi' => $this->nimi, 'vari' => $this->vari, 'kuvaus'=>$this->kuvaus));
+        $query -> execute(array('nimi' => $this->nimi, 'vari' => (int)$this->vari, 'kuvaus'=>$this->kuvaus));
         $row = $query->fetch();
 
         $this->id = $row['id'];
@@ -67,18 +67,30 @@ Class Rypale extends BaseModel{
     }
 
     public function update(){
-        $query = DB::connection()->prepare('INSERT INTO rypale (nimi, vari, kuvaus) VALUES (:nimi, :vari, :kuvaus) RETURNING id');
+        $query = DB::connection()->prepare('UPDATE rypale SET nimi = :nimi, vari = :vari, kuvaus = :kuvaus WHERE id = :id RETURNING id');
 
-        $query -> execute(array('nimi' => $this->nimi, 'vari' => $this->vari, 'kuvaus'=>$this->kuvaus));
+
+        $query -> execute(array('nimi' => $this->nimi, 'vari' => $this->vari, 'kuvaus'=>$this->kuvaus, 'id' => $this->id));
         $row = $query->fetch();
 
         $this->id = $row['id'];
 
     }
 
-    public static function vari(){
+    public function destroy(){
+        $query = DB::connection()->prepare('DELETE FROM rypale WHERE id = :id RETURNING id');
 
-        if ('vari' == 1){
+
+        $query -> execute(array('id' => $this->id));
+        $row = $query->fetch();
+
+        $this->id = $row['id'];
+
+    }
+
+    public function vari(){
+
+        if ($this->vari == 1){
             return "Punainen";
         }
         return "Valkoinen";
@@ -102,9 +114,11 @@ Class Rypale extends BaseModel{
 
         $errors = array();
 
-        if ($this->vari != 1 || $this->vari != 2){
+        if ($this->vari < 1 || $this->vari > 2){
             $errors[] = 'Eipäs yritetä syöttää muuta kuin 1 tai 2';
         }
+
+        return $errors;
     }
 }
 

@@ -18,7 +18,7 @@ CREATE TABLE rypale (
 
   id       SERIAL PRIMARY KEY,
   nimi     VARCHAR(50) NOT NULL UNIQUE,
-  vari     VARCHAR(20) NOT NULL,
+  vari     INTEGER NOT NULL,
   kuvaus   TEXT        NOT NULL
 
 );

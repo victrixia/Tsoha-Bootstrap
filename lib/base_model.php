@@ -1,5 +1,4 @@
 <?php
-require vlucas/valitron;
 
 class BaseModel
 {
@@ -43,6 +42,16 @@ class BaseModel
         }
         if (strlen($string) < $length) {
             $errors[] = 'Vähintään ' . $length . ' merkkiä!';
+        }
+
+        return $errors;
+    }
+
+    public function validate_max_length($string, $length)
+    {
+
+        if (strlen($string) > $length) {
+            $errors[] = 'Enintään ' . $length . ' merkkiä!';
         }
 
         return $errors;

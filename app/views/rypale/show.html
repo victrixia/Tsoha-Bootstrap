@@ -1,34 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
+
+{% if message %}
 
 <div class="alert alert-success">
     {{message}}
 </div>
 
-    <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+{% endif %}
 
-    <h1>{{rypale.nimi}}</h1>
+<!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
 
-    <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Nimi</th>
-                <th>Väri</th>
+<h1>{{rypale.nimi}}</h1>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{rypale.nimi}}</td>
-                <td>{{rypale.vari()}}</td>
+{{forms.destroy_button("#{base_path}/rypale/#{rypale.id}/destroy")}}
+{{forms.link_button("#{base_path}/rypale/#{rypale.id}/edit")}}
 
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Väri</th>
 
-    </p></section>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{rypale.nimi}}</td>
+            <td>{{rypale.vari()}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-md-10">
+{{rypale.kuvaus}}
+</div>
+
+</p></section>
+
 
 
 {% endblock %}

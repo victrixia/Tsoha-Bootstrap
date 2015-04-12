@@ -11,8 +11,8 @@ INSERT INTO kotimaa (nimi,alue) VALUES ('Ranska', 'Vin de France');
 INSERT INTO kotimaa (nimi,alue) VALUES ('Saksa', 'Mosel');
 INSERT INTO kotimaa (nimi,alue) VALUES ('Italia', 'IGT Costa Toscana');
 
-INSERT INTO rypale(nimi,vari,kuvaus) VALUES ('Pinot Gris', 'Valkoinen', 'Perus maalaisrypäle, suosittu etenkin Alsacessa');
-INSERT INTO rypale (nimi, vari, kuvaus) VALUES ('Pinot Noir', 'Punainen', 'Kevyitä, läpikuultavia, hapokkaita ja marjaisia viinejä');
+INSERT INTO rypale(nimi,vari,kuvaus) VALUES ('Pinot Gris', 2, 'Perus maalaisrypäle, suosittu etenkin Alsacessa');
+INSERT INTO rypale (nimi, vari, kuvaus) VALUES ('Pinot Noir', 1, 'Kevyitä, läpikuultavia, hapokkaita ja marjaisia viinejä');
 
 INSERT INTO viini (viinityyppi_id, kotimaa_id, nimi, vuosikerta, alkoholi, happo, makeus, uutos) VALUES (2,2,'Kissanpissa',2014,12.5,5,7,25);
 
