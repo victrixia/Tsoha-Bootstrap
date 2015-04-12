@@ -24,17 +24,27 @@ class RypaleController extends BaseController
     {
         $params = $_POST;
 
-        $rypale = new rypale(array(
+        $attributes = array(
             'nimi' => $params['nimi'],
             'vari' => (int)$params['vari'],
             'kuvaus' => $params['kuvaus']
-        ));
+        );
 
-        Kint::dump($params);
+        $rypale = new Rypale($attributes);
+        $errors = $rypale->errors();
 
-        $rypale->save();
+        if (count($errors) == 0){
+            //jes jes
+            $rypale->save();
 
-        Redirect::to('/rypale/' . $rypale->id, array('message' => 'Rypäle lisätty onnistuneesti!'));
+            Redirect::to('/rypale/' . $rypale->id, array('message' => 'Rypäle lisätty onnistuneesti!'));
+        } else {
+
+            View::make('rypale/new.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
+
+
+
 
     }
 
@@ -42,5 +52,45 @@ class RypaleController extends BaseController
     {
 
         View::make('rypale/new.html');
+    }
+
+    public static function edit($id){
+
+        $rypale = Rypale::find($id);
+        View::make('rypale/edit.html', array('attributes' => $rypale));
+    }
+
+    public static function update($id){
+
+        $params = $_POST;
+
+        $attributes = array(
+            'id' => $id,
+            'nimi' => $params['nimi'],
+            'vari' => $params['vari'],
+            'kuvaus' => $params['kuvaus']
+        );
+
+        $rypale = new Rypale($attributes);
+        $errors = $rypale->errors();
+
+        if (count($errors) > 0){
+
+            View::make('rypale/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+            $rypale->update();
+            Redirect::to('/rypale/' . $rypale->id, array('message' => 'Muokkaus onnistui!'));
+        }
+
+    }
+
+    public static function destroy($id){
+
+        $rypale = new Rypale(array('id' => $id));
+
+        $rypale->destroy();
+
+        // Ohjataan käyttäjä pelien listaussivulle ilmoituksen kera
+        Redirect::to('/game', array('message' => 'Peli on poistettu onnistuneesti!'));
     }
 }

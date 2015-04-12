@@ -15,11 +15,17 @@ class HelloWorldController extends BaseController
     {
         // Testaa koodiasi täällä
 
-        $viini = viini::find(1);
-        $viinit = viini::all();
+        $rypale = new Rypale(array(
+            'nimi' => 's',
+            'vari' => 1,
+            'kuvaus' => 'rusina'
+        ));
 
-        Kint::dump($viinit);
-        Kint::dump($viini);
+        $errors = $rypale->errors();
+
+
+        Kint::dump($rypale);
+        Kint::dump($errors);
     }
 
     public static function etusivu()

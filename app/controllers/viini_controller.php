@@ -34,8 +34,8 @@ class ViiniController extends BaseController
             'uutos' => (is_numeric($params['uutos']) ? (real)($params['uutos']) : 0)
         ));
 
-        Kint:dump($params);
-        Kint::trace();
+//        Kint::dump($params);
+//        Kint::trace();
 
         $viini->save();
 
