@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-
 {% import "macros/wine_forms.html" as forms %}
 
-<h1>Luo uusi viini</h1>
+
+<h1>{{attributes.nimi}}</h1>
 
 {% if errors %}
 <div class="alert alert-danger">
@@ -15,5 +15,7 @@
 </div>
 {% endif %}
 
-{{forms.wine_post_form("#{base_path}/viini", attributes, rypaleet)}}
+
+{{forms.wine_post_form("#{base_path}/viini/#{attributes.id}/edit", attributes)}}
+
 {% endblock %}

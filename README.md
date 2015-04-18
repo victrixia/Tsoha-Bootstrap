@@ -9,8 +9,6 @@ Yleisiä linkkejä:
 
 Harjoitustyö löytyy ylläolevaa sovelluslinkkiä seuraamalla. Käytössä on tunnukset käyttäjänimi:tarkastaja, salasana: kekkonen1 (älä kysy). Sessiota on käytetty hyväksi lähinnä niin, että rypäleen lisäys ja muokkaus on mahdollista vain kirjautuneelle käyttäjälle. Lisäksi kirjautumisen näkee lähinnä siitä, että ylhäällä oikealla on ei mihinkään johtava 'kirjaudu ulos' -linkki. :P Sovellukseen voi toistaiseksi lisätä yksittäisiä viinejä ja rypäleitä, käyttäjän omia ei ole vielä toteutettu. 
 
-Ylipäätään rypäleen toiminnot ovat pisimmällä, koska taulu on yksinkertaisempi ja helpompi saada toimimaan - php:n kanssa nollasta lähteminen on todella turhauttavaa ja hankalaa kun on tottunut rubyyn :((( 
-
 ## Työn aihe: Viinisuositus-websovellus
 
 Järjestelmä muistuttaa itse asiassa jossain määrin valmiiden aiheiden drinkkiarkistoa. Tarkoitus on toteuttaa järjestelmä, josta voi hakea omaan makuunsa tai johonkin tiettyyn ruokalajiin sopivia viinejä ja niiden tarkkoja kuvauksia niiden tyypin, makeusasteen, käytettyjen rypäleiden ja muiden ominaisuuksien mukaan. Viineillä on myös kotimaa. Järjestelmä keskittyy nimenomaan viinirypäleestä käytettyjen juomien listaamiseen, eikä sisällä esim. Oluita tai juomasekoituksia. 

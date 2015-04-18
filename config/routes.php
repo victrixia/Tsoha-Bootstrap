@@ -1,5 +1,9 @@
 <?php
 
+function check_logged_in(){
+    BaseController::check_logged_in();
+}
+
 
 $routes->get('/', function () {
     HelloWorldController::index();
@@ -25,7 +29,7 @@ $routes->post('/viini', function () {
     ViiniController::store();
 });
 
-$routes->get('/viini/new', function () {
+$routes->get('/viini/new', 'check_logged_in', function () {
 
     ViiniController::create();
 });
@@ -33,6 +37,10 @@ $routes->get('/viini/new', function () {
 $routes->get('/viini/:id', function ($id) {
     ViiniController::show($id);
 
+});
+
+$routes->post('/viini/:id/destroy', 'check_logged_in', function($id){
+   ViiniController::destroy($id);
 });
 
 $routes->post('/rypale', function(){
@@ -45,7 +53,7 @@ $routes->get('/rypale', function(){
 
 });
 
-$routes->get('/rypale/new', function () {
+$routes->get('/rypale/new', 'check_logged_in', function () {
 
     RypaleController::create();
 });
@@ -55,7 +63,7 @@ $routes->get('/rypale/:id', function ($id) {
 
 });
 
-$routes->get('/rypale/:id/edit', function($id){
+$routes->get('/rypale/:id/edit', 'check_logged_in', function($id){
 
    RypaleController::edit($id);
 });
@@ -65,15 +73,18 @@ $routes->post('/rypale/:id/edit', function($id){
     RypaleController::update($id);
 });
 
-$routes->post('/rypale/:id/destroy', function($id){
+$routes->post('/rypale/:id/destroy', 'check_logged_in', function($id){
 
     RypaleController::destroy($id);
 });
 
-$routes->get('/viini/1/edit', function () {
-    HelloWorldController::wine_edit();
+$routes->get('/viini/:id/edit', 'check_logged_in', function ($id) {
+    ViiniController::edit($id);
 });
 
+$routes->post('/viini/:id/edit', 'check_logged_in', function ($id) {
+    ViiniController::update($id);
+});
 
 $routes->get('/login', function () {
     UserController::login();
@@ -83,5 +94,9 @@ $routes->get('/login', function () {
 
 $routes->post('/login', function(){
     UserController::handle_login();
+});
+
+$routes -> post('/logout', function(){
+    UserController::logout();
 });
 

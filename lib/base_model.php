@@ -50,6 +50,7 @@ class BaseModel
     public function validate_max_length($string, $length)
     {
 
+        $errors = array();
         if (strlen($string) > $length) {
             $errors[] = 'Enintään ' . $length . ' merkkiä!';
         }
@@ -61,11 +62,22 @@ class BaseModel
 
         $errors = array();
         if (!is_numeric($number)){
-            $errors[] = 'Syöte ei ole numero!';
+            $errors[] = 'Tarkista että olet syöttänyt numerokenttiin pelkkiä numeroita!';
 
         }
 
         return $errors;
+    }
+
+    public function number_is_not_empty($number){
+        $errors = array();
+        if ($number == '' || $number == null) {
+
+            $errors[] = 'Kenttä ei saa olla tyhjä!';
+        }
+
+        return $errors;
+
     }
 
 
