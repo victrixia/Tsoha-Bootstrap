@@ -7,15 +7,20 @@ class ViiniController extends BaseController
     {
 
         $viinit = Viini::all();
-        View::make('viini/index.html', array('viinit' => $viinit));
+        $maat = Kotimaa::all();
+
+        View::make('viini/index.html', array('viinit' => $viinit, 'maat' => $maat));
     }
 
     public static function show($id)
     {
 
         $viini = Viini::find($id);
-        View::make('viini/show.html', array('viini' => $viini));
-//        Kint::dump($viini);
+        $rypaleet = ViininRypaleetController::find_rypaleet($id);
+        $kotimaa = Kotimaa::find($viini->kotimaa_id);
+//        View::make('viini/show.html', array('viini' => $viini, 'kotimaa' => $kotimaa, 'rypaleet' => $rypaleet));
+        Kint::dump($viini);
+        Kint::dump($rypaleet);
     }
 
     public static function store()
@@ -59,8 +64,9 @@ class ViiniController extends BaseController
     public static function create()
     {
 
+        $maat = Kotimaa::all();
         $rypaleet = Rypale::all();
-        View::make('viini/new.html', array('rypaleet' => $rypaleet));
+        View::make('viini/new.html', array('rypaleet' => $rypaleet, 'maat' => $maat));
     }
 
     public static function edit($id)
@@ -69,7 +75,8 @@ class ViiniController extends BaseController
 
         $viini = Viini::find($id);
         $rypaleet = Rypale::all();
-        View::make('viini/edit.html', array('attributes' => $viini, 'rypaleet' => $rypaleet));
+        $maat = Kotimaa::all();
+        View::make('viini/edit.html', array('attributes' => $viini, 'rypaleet' => $rypaleet, 'maat' => $maat));
     }
 
     public static function update($id)
@@ -111,7 +118,7 @@ class ViiniController extends BaseController
         $viini->destroy();
 
         // Ohjataan käyttäjä viinien listaussivulle ilmoituksen kera
-        Redirect::to('/viini', array('message' => 'Rypäle on poistettu onnistuneesti!'));
+        Redirect::to('/viini', array('message' => 'Viini on poistettu onnistuneesti!'));
     }
 
 }

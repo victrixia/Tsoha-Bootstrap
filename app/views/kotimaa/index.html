@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Maat ja alueet</h1>
+
+<section><p>
+    Tietokantaan lisätyt viinialueet
+</p></section>
+
+
+{% if user_logged_in %}
+<p>    <a href="{{base_path}}/kotimaa/new" class="btn btn-info">Lisää uusi</a></p>
+
+{% endif %}
+
+<section><p>
+    <!--Teen myöhemmin erikseen taulukkopohjan jota voi käyttää pohjana rypaleen näyttämiselle, niin sitä ei tarvitse joka kerta erikseen koodata-->
+
+    <h2>Kaikki maat</h2>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Maa</th>
+                <th>Alue</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for maa in maat%}
+            <tr>
+                <td><a href="{{base_path}}/kotimaa/{{maa.id}}">{{maa.nimi}}</a></td>
+                <td>{{maa.alue}}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </p></section>
+
+
+{% endblock %}

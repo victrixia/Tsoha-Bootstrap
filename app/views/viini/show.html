@@ -28,15 +28,15 @@
 <p><strong>
     <ul>
 
-        {% for rypale in viini.rypaleet %}
-            <li><a href="{{base_path}}/rypale/{{rypale.id}}">{{rypale.nimi}}</a> </li>
+        {% for rypale in rypaleet %}
+            <a href="{{base_path}}/rypale/{{rypale.id}}">{{rypale.nimi}}  </a>
         {% endfor %}
     </ul>
 </strong></p>
 
-<p>Kuvaus kun yhteys kuvaukseen operoi</p>
+<p>{{viini.kuvaus}}</p>
 <div>
-    <table class="table-bordered table-striped">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>Tyyppi</th>
@@ -58,22 +58,18 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{viini.viinityyppi_id}}</td>
-            <td>{% if viinityyppi_id == 1%}
-                Uutosta {{viini.uutos}} g/l
+            <td>{{viini.tyyppi()}}</td>
+            <td>{% if viini. onPunaviini()%}
+                {{viini.taytelaisyys()}}
                 {% else %}
-                Sokeria {{viini.makeus}} g/l
+                {{viini.makeus()}}
 
                 {% endif %}
             </td>
-            <td>{% if viinityyppi_id == 1%}
-                Tanniineja
-                {% else %}
-                Happoja
-
-                {% endif %} {{viini.happo}} g/l
+            <td>
+                {{viini.hapokkuus()}}
             </td>
-            <td>{{viini.kotimaa_id}}</td>
+            <td>{{kotimaa.toString()}}</td>
         </tr>
         </tbody>
 
@@ -89,6 +85,7 @@
     </li>
     {% endif %}
     <li>Happoja: {{viini.happo}} g/l</li>
+    <li>Uutosta: {{viini.uutos}} g/l</li>
     <li>Vuosikerta: {{viini.vuosikerta}}</li>
 
 </ul></p>

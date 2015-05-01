@@ -43,7 +43,7 @@ $routes->post('/viini/:id/destroy', 'check_logged_in', function($id){
    ViiniController::destroy($id);
 });
 
-$routes->post('/rypale', function(){
+$routes->post('/rypale', 'check_logged_in', function(){
    RypaleController::store();
 
 });
@@ -84,6 +84,20 @@ $routes->get('/viini/:id/edit', 'check_logged_in', function ($id) {
 
 $routes->post('/viini/:id/edit', 'check_logged_in', function ($id) {
     ViiniController::update($id);
+});
+
+$routes->get('/kotimaa/new', 'check_logged_in', function(){
+   KotimaaController::create();
+});
+
+$routes->post('/kotimaa', function(){
+    KotimaaController::store();
+
+});
+
+$routes->get('/kotimaa', function(){
+
+    KotimaaController::index();
 });
 
 $routes->get('/login', function () {

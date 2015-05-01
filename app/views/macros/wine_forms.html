@@ -1,4 +1,4 @@
-{% macro wine_post_form(action, attributes, rypaleet) %}
+{% macro wine_post_form(action, attributes, rypaleet, maat) %}
 
 
 <form method="post" action={{action}} style="display: inline-block;">
@@ -70,30 +70,34 @@
         <select name="kotimaa_id" class="form-control">
 
             {% if attributes %}
-            <option selected value="{{attributes.kotimaa_id}}">{{attributes.kotimaa_id}}</option>
+            <option selected value="{{attributes.kotimaa_id}}">{{maat[attributes.kotimaa_id].toString()}}</option>
             {% endif %}
-            <option value="1">Ranska, Vin de France</option>
-            <option value="2">Saksa, Mosel</option>
-            <option value="3">Italia, IGT Costa Toscana</option>
+
+            {% for maa in maat %}
+            <option value="{{maa.id}}">{{maa.toString()}}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="form-group">
         <label>Rypäleet</label>
         <select class="form-control" name="rypaleet[]" multiple="">
+            {% if attributes %}
+            {% for rypale in attributes.rypaleet %}
+            <option selected value="{{rypale.id}}">{{rypale.nimi}}</option>
+
+            {% endfor %}
+            {% endif %}
+
             {% for rypale in rypaleet %}
             <option value="{{rypale.id}}">{{rypale.nimi}}</option>
+
             {% endfor %}
+
 
         </select>
     </div>
 
-    Tulee lisää vaihtoehtoja kunhan yhteydet toimii, ts. rypäleet ja kuvaus
-
-    <!--<div class="form-group">-->
-    <!--<label>Rypäleet</label>-->
-    <!--<input type="text" class="form-control">-->
-    <!--</div>-->
     <!--<div class="form-group">-->
     <!--<label>Kuvaus</label>-->
     <!--<input type="text" class="form-control">-->
@@ -102,4 +106,13 @@
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
 </form>
+
+<!--{% for rypale in rypaleet%}-->
+<!--{{rypale.nimi}} " eiksjuu " {{rypale.id}} <br>-->
+<!--{% endfor %}-->
+
+{% for rypale in attributes.rypaleet %}
+{{rypale.nimi}} "joohn" <br>
+{% endfor %}
+
 {% endmacro %}

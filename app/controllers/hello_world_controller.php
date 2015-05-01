@@ -30,8 +30,10 @@ class HelloWorldController extends BaseController
 
     public static function etusivu()
     {
-
-        View::make('suunnitelmat/etusivu.html');
+        $puna = Viini::newest(1);
+        $valko = Viini::newest(2);
+        $maat = Kotimaa::all();
+        View::make('/etusivu.html', array('punaviinit'=>$puna, 'valkoviinit'=>$valko, 'maat' => $maat));
     }
 
     public static function viinit()

@@ -1,0 +1,38 @@
+{% macro table(viinit, maat) %}
+
+
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tyyppi</th>
+            <th>Makeusaste/Täyteläisyys</th>
+            <th>Hapokkuus/Tanniinisuus</th>
+            <th>Kotimaa</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for viini in viinit%}
+        <tr>
+            <td><a href="{{base_path}}/viinisuositus/viini/{{viini.id}}">{{viini.nimi}}</a></td>
+            <td>{{viini.tyyppi()}}</td>
+            <td>
+                {% if viini.onPunaviini() %}
+                {{viini.taytelaisyys()}}
+                {% else %}
+                {{viini.makeus()}}
+
+                {% endif %}
+            </td>
+            <td>{{viini.hapokkuus()}}
+
+            </td>
+            <td>{{maat[viini.kotimaa_id].toString()}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endmacro %}
