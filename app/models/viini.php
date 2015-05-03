@@ -27,6 +27,8 @@ Class Viini extends BaseModel
             return "Jälkiruokaviini";
         } else if ($this->viinityyppi_id == 6) {
             return "Shampanja";
+        }else if ($this->viinityyppi_id == 7) {
+            return "Portviini";
         } else {
             return "Tuntematon";
         }
@@ -46,7 +48,7 @@ Class Viini extends BaseModel
         }
 
         if ($this->happo <= 3) {
-            $luonnehdinta = "vähä";
+            $luonnehdinta = "vähän ";
         } else if ($this->happo <= 5) {
             $luonnehdinta = "keski";
         } else if ($this->happo <= 7) {
@@ -63,7 +65,7 @@ Class Viini extends BaseModel
     {
 
         if ($this->makeus <= 4) {
-            $luonnehdinta = "";
+            $luonnehdinta = "erittäin kuiva";
         } else if ($this->makeus <= 10) {
             $luonnehdinta = "kuiva";
         } else if ($this->makeus <= 20) {
@@ -190,7 +192,7 @@ Class Viini extends BaseModel
 
     public function save()
     {
-        $query = DB::connection()->prepare('INSERT INTO viini (viinityyppi_id, kotimaa_id, nimi, vuosikerta, alkoholi, happo, makeus, uutos) VALUES (:viinityyppi_id, :kotimaa_id, :nimi, :vuosikerta, :alkoholi, :happo, :makeus, :uutos, :kuvaus) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO viini (viinityyppi_id, kotimaa_id, nimi, vuosikerta, alkoholi, happo, makeus, uutos, kuvaus) VALUES (:viinityyppi_id, :kotimaa_id, :nimi, :vuosikerta, :alkoholi, :happo, :makeus, :uutos, :kuvaus) RETURNING id');
 
         $query->execute(array('viinityyppi_id' => $this->viinityyppi_id, 'kotimaa_id' => $this->kotimaa_id, 'nimi' => $this->nimi, 'vuosikerta' => $this->vuosikerta, 'alkoholi' => $this->alkoholi, 'happo' => $this->happo, 'makeus' => $this->makeus, 'uutos' => $this->uutos, 'kuvaus' => $this->kuvaus));
 
@@ -203,10 +205,10 @@ Class Viini extends BaseModel
 
     public function update()
     {
-        $query = DB::connection()->prepare('UPDATE viini SET viinityyppi_id = :viinityyppi_id, nimi = :nimi, vuosikerta = :vuosikerta, alkoholi = :alkoholi, happo = :happo, makeus = :makeus, uutos = :uutos, kuvaus = :kuvaus WHERE id = :id RETURNING id');
+        $query = DB::connection()->prepare('UPDATE viini SET viinityyppi_id = :viinityyppi_id, kotimaa_id = :kotimaa_id, nimi = :nimi, vuosikerta = :vuosikerta, alkoholi = :alkoholi, happo = :happo, makeus = :makeus, uutos = :uutos, kuvaus = :kuvaus WHERE id = :id RETURNING id');
 
 
-        $query->execute(array('viinityyppi_id' => $this->viinityyppi_id, 'nimi' => $this->nimi, 'vuosikerta' => $this->vuosikerta, 'alkoholi' => $this->alkoholi, 'happo' => $this->happo, 'makeus' => $this->makeus, 'uutos' => $this->uutos, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
+        $query->execute(array('viinityyppi_id' => $this->viinityyppi_id, 'kotimaa_id' => $this->kotimaa_id, 'nimi' => $this->nimi, 'vuosikerta' => $this->vuosikerta, 'alkoholi' => $this->alkoholi, 'happo' => $this->happo, 'makeus' => $this->makeus, 'uutos' => $this->uutos, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
         $row = $query->fetch();
 
         $this->id = $row['id'];

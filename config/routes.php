@@ -78,6 +78,21 @@ $routes->post('/rypale/:id/destroy', 'check_logged_in', function($id){
     RypaleController::destroy($id);
 });
 
+$routes->post('/viini/:viini_id/:rypale_id/destroy', 'check_logged_in', function($viini_id, $rypale_id){
+
+    ViininRypaleetController::destroy($viini_id, $rypale_id);
+});
+
+$routes->get('/viini/:id/rypaleet', function($id){
+
+    ViiniController::edit_grapes($id);
+});
+
+$routes->post('/viini/rypaleet', 'check_logged_in', function(){
+
+    ViininRypaleetController::store();
+});
+
 $routes->get('/viini/:id/edit', 'check_logged_in', function ($id) {
     ViiniController::edit($id);
 });

@@ -18,15 +18,15 @@ class ViiniController extends BaseController
         $viini = Viini::find($id);
         $rypaleet = ViininRypaleetController::find_rypaleet($id);
         $kotimaa = Kotimaa::find($viini->kotimaa_id);
-//        View::make('viini/show.html', array('viini' => $viini, 'kotimaa' => $kotimaa, 'rypaleet' => $rypaleet));
-        Kint::dump($viini);
-        Kint::dump($rypaleet);
+        View::make('viini/show.html', array('viini' => $viini, 'kotimaa' => $kotimaa, 'rypaleet' => $rypaleet));
+//        Kint::dump($viini);
+//        Kint::dump($rypaleet);
     }
 
     public static function store()
     {
         $params = $_POST;
-        $rypaleet = $params['rypaleet'];
+
 
         $attributes = array(
             'nimi' => $params['nimi'],
@@ -37,7 +37,7 @@ class ViiniController extends BaseController
             'alkoholi' => (is_numeric($params['alkoholi']) ? (real)($params['alkoholi']) : 0),
             'kotimaa_id' => (int)$params['kotimaa_id'],
             'uutos' => (is_numeric($params['uutos']) ? (real)($params['uutos']) : 0),
-            'rypaleet' => $rypaleet
+            'kuvaus' => $params['kuvaus']
         );
 
 
@@ -56,9 +56,20 @@ class ViiniController extends BaseController
             Redirect::to('/viini/' . $viini->id, array('message' => 'Viini lisätty onnistuneesti!'));
         } else {
 
-            View::make('viini/new.html', array('errors' => $errors, 'attributes' => $attributes, 'rypaleet' => $rypaleet));
+            $kaikkirypaleet = Rypale::all();
+            $maat = Kotimaa::all();
+            View::make('viini/new.html', array('errors' => $errors, 'attributes' => $attributes, 'rypaleet' => $kaikkirypaleet, 'maat' => $maat));
         }
 
+    }
+
+    public static function edit_grapes($id){
+
+        $rypaleet = Rypale::all();
+        $viini = Viini::find($id);
+        $viinin_rypaleet = ViininRypaleetController::find_rypaleet($id);
+
+        View::make('viini/new_grapes.html', array('rypaleet' => $rypaleet, 'viini' => $viini, 'viinin_rypaleet' => $viinin_rypaleet));
     }
 
     public static function create()
@@ -83,7 +94,6 @@ class ViiniController extends BaseController
     {
 
         $params = $_POST;
-
         $attributes = array(
             'id' => $id,
             'nimi' => $params['nimi'],
@@ -93,8 +103,11 @@ class ViiniController extends BaseController
             'vuosikerta' => $params['vuosikerta'],
             'alkoholi' => $params['alkoholi'],
             'kotimaa_id' => $params['kotimaa_id'],
-            'uutos' => $params['uutos']
+            'uutos' => $params['uutos'],
+            'kuvaus' => $params['kuvaus']
         );
+
+        Kint::dump($attributes);
 
         $viini = new Viini($attributes);
         $errors = $viini->errors();
@@ -104,7 +117,7 @@ class ViiniController extends BaseController
             View::make('viini/edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $viini->update();
-            Redirect::to('/viini/' . $viini->id, array('message' => 'Muokkaus onnistui!'));
+            Redirect::to('/viini/' . $viini->id, array('message' => 'Muokkaus todellakin onnistui!'));
         }
 
     }

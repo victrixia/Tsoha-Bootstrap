@@ -1,7 +1,7 @@
 {% macro wine_post_form(action, attributes, rypaleet, maat) %}
 
 
-<form method="post" action={{action}} style="display: inline-block;">
+<form method="post" action={{action}} style="display: inline-block;" id ="wine-form">
 
     <div class="form-group">
         <label>Nimi</label>
@@ -11,14 +11,6 @@
         <label>Tyyppi</label>
         <select name="tyyppi" class="form-control" value="{{attributes.viinityyppi_id}}">
 
-            <!--Tämä tulee käyttöön sitten kun viinityyppi toimii kunnolla!-->
-
-            <!--<select name = "viinityyppi" class="form-control" value="{{attributes.viinityyppi_id}}">-->
-            <!--{% for viinityyppi in viinityypit %}-->
-
-            <!--<option value="{{viinityyppi.id}}">{{viinityyppi.nimi}}</option>-->
-            <!--{% endfor %}-->
-            <!--</select>-->
             {% if attributes %}
             <option selected value="{{attributes.viinityyppi_id}}">{{attributes.viinityyppi_id}}</option>
             {% endif %}
@@ -26,6 +18,10 @@
             <option value="2">Valkoviini</option>
             <option value="3">Kuohuviini</option>
             <option value="4">Roseeviini</option>
+            <option value="5">Jälkiruokaviini</option>
+            <option value="6">Shampanja</option>
+            <option value="7">Portviini</option>
+
         </select>
     </div>
     <div class="form-group">
@@ -65,6 +61,12 @@
         <label>Uutos (g/l)</label>
         <input type="text" name="uutos" class="form-control" value="{{attributes.uutos}}">
     </div>
+
+    <div class="form-group">
+        <label>Kuvaus</label>
+
+        <input type="text" name="kuvaus" class="form-control" value="{{attributes.kuvaus}}">
+    </div>
     <div class="form-group">
         <label>Alkuperämaa</label>
         <select name="kotimaa_id" class="form-control">
@@ -79,40 +81,11 @@
         </select>
     </div>
 
-    <div class="form-group">
-        <label>Rypäleet</label>
-        <select class="form-control" name="rypaleet[]" multiple="">
-            {% if attributes %}
-            {% for rypale in attributes.rypaleet %}
-            <option selected value="{{rypale.id}}">{{rypale.nimi}}</option>
 
-            {% endfor %}
-            {% endif %}
-
-            {% for rypale in rypaleet %}
-            <option value="{{rypale.id}}">{{rypale.nimi}}</option>
-
-            {% endfor %}
-
-
-        </select>
-    </div>
-
-    <!--<div class="form-group">-->
-    <!--<label>Kuvaus</label>-->
-    <!--<input type="text" class="form-control">-->
-    <!--</div>-->
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
 </form>
 
-<!--{% for rypale in rypaleet%}-->
-<!--{{rypale.nimi}} " eiksjuu " {{rypale.id}} <br>-->
-<!--{% endfor %}-->
-
-{% for rypale in attributes.rypaleet %}
-{{rypale.nimi}} "joohn" <br>
-{% endfor %}
 
 {% endmacro %}

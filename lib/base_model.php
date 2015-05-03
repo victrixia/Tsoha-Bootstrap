@@ -71,7 +71,7 @@ class BaseModel
 
     public function number_is_not_empty($number){
         $errors = array();
-        if ($number == '' || $number == null) {
+        if (is_null($number)) {
 
             $errors[] = 'Kenttä ei saa olla tyhjä!';
         }

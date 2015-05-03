@@ -11,13 +11,13 @@ class KotimaaController extends BaseController
         View::make('kotimaa/index.html', array('maat' => $maat));
     }
 
-    public static function show($id)
-    {
-
-        $kotimaa = Kotimaa::find($id);
-        View::make('kotimaa/show.html', array('kotimaa' => $kotimaa));
-
-    }
+//    public static function show($id)
+//    {
+//
+//        $kotimaa = Kotimaa::find($id);
+//        View::make('kotimaa/show.html', array('kotimaa' => $kotimaa));
+//
+//    }
 
 
 
@@ -37,7 +37,7 @@ class KotimaaController extends BaseController
             //jes jes
             $kotimaa->save();
 
-            Redirect::to('/kotimaa/' . $kotimaa->id, array('message' => 'Maa ja alue lisätty onnistuneesti!'));
+            Redirect::to('/kotimaa',  array('message' => 'Maa ja alue lisätty onnistuneesti!'));
         } else {
 
             View::make('kotimaa/new.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -78,7 +78,7 @@ class KotimaaController extends BaseController
             View::make('kotimaa/edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $kotimaa->update();
-            Redirect::to('/kotimaa/' . $kotimaa->id, array('message' => 'Muokkaus onnistui!'));
+            Redirect::to('/kotimaa', array('message' => 'Muokkaus onnistui!'));
         }
 
     }

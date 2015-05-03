@@ -11,12 +11,7 @@
 {% endif %}
 
 <h1>{{viini.nimi}}</h1>
-<!-- Painikkeet tähän -->
 
-{% if user_logged_in%}
-{{forms.destroy_button("#{base_path}/viini/#{viini.id}/destroy")}}
-{{forms.link_button("#{base_path}/viini/#{viini.id}/edit")}}
-{% endif %}
 
 <!--<p>-->
 <!--<button class="btn btn-danger">Poista</button>-->
@@ -32,7 +27,12 @@
             <a href="{{base_path}}/rypale/{{rypale.id}}">{{rypale.nimi}}  </a>
         {% endfor %}
     </ul>
-</strong></p>
+</strong>
+{% if user_logged_in %}
+    {{forms.link_button("#{base_path}/viini/#{viini.id}/rypaleet", "Muokkaa rypäleitä")}}
+{% endif %}
+
+</p>
 
 <p>{{viini.kuvaus}}</p>
 <div>
@@ -89,5 +89,10 @@
     <li>Vuosikerta: {{viini.vuosikerta}}</li>
 
 </ul></p>
-<p></p>
+<p><!-- Painikkeet tähän -->
+
+    {% if user_logged_in%}
+    {{forms.destroy_button("#{base_path}/viini/#{viini.id}/destroy")}}
+    {{forms.link_button("#{base_path}/viini/#{viini.id}/edit")}}
+    {% endif %}</p>
 {% endblock %}

@@ -24,7 +24,7 @@ CREATE TABLE viini (
   vuosikerta     SMALLINT CHECK (vuosikerta > 1800),
   alkoholi       REAL CHECK (alkoholi >= 0) NOT NULL,
   happo          REAL CHECK (happo >= 0)    NOT NULL,
-  makeus         SMALLINT CHECK (makeus >= 4), -- Makeus on joko 4g/l tai yli, muuten null
+  makeus         SMALLINT CHECK (makeus >= 0),
   uutos          REAL CHECK (uutos > 0),
   kuvaus         TEXT NOT NULL
 

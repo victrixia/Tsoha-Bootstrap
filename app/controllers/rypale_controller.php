@@ -16,7 +16,9 @@ class RypaleController extends BaseController
     {
 
         $rypale = rypale::find($id);
-        View::make('rypale/show.html', array('rypale' => $rypale));
+        $viinit = ViininRypaleetController::find_viinit($id);
+        $maat = Kotimaa::all();
+        View::make('rypale/show.html', array('rypale' => $rypale, 'viinit' => $viinit, 'maat' => $maat));
 //        Kint::dump($rypale);
     }
 
